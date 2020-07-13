@@ -1,6 +1,6 @@
 {
   "name": "once-defined",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "A minimalistic boilerplate to wait for Custom Elements, or libraries, definition",
   "main": "./cjs/index.js",
   "scripts": {
