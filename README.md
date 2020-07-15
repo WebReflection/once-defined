@@ -3,18 +3,18 @@
 A minimalistic, ~140 bytes, boilerplate to wait for Custom Elements, or libraries, definition.
 
 ```js
-import onceDefined from 'once-defined';
-// const onceDefined = require('once-defined');
+import when from 'once-defined';
+// const when = require('once-defined');
 // <script src="//unpkg.com/once-defined">
 
 // other custom elements
-onceDefined('outer-comp', 'inner-comp').then(([Outer, Inner]) => {
+when(['outer-comp', 'inner-comp']).then(([Outer, Inner]) => {
   // define your components when Outer or Inner classes
   // have been registered
 });
 
-// uce library example
-onceDefined('uce-lib').then(({define, render, html, svg, css}) => {
+// uce library example / single name
+when('uce-lib').then(({define, render, html, svg, css}) => {
   // define your components
 });
 ```
@@ -37,4 +37,4 @@ customElements.whenDefined(thing).then(
 });
 ```
 
-Just `onceDefined(thing).then(thing => { ... })` and call it a day 🎉
+Use just `when(thing).then(thing => { ... })` and call it a day 🎉

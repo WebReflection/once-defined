@@ -1,6 +1,14 @@
 'use strict';
-module.exports = (...$) => Promise.all(
-  $.map(_ => customElements.whenDefined(_).then(
-    () => customElements.get(_)
-  ))
-).then($ => $.length === 1 ? $[0] : $);
+/**
+ * @param {string|string[]} names one or more `customElements` names
+ * @return {HTMLElement|HTMLElement[]} one or more classes defined through
+ * the `customElements` registry
+ */
+module.exports = names => {
+  const all = [].concat(names);
+  return Promise.all(
+    all.map(name => customElements.whenDefined(name).then(
+      () => customElements.get(name)
+    ))
+  ).then(result => all.length < 2 ? result[0] : result);
+};

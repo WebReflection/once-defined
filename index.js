@@ -1,17 +1,19 @@
 self.onceDefined = (function (exports) {
   'use strict';
 
-  var index = (function () {
-    for (var _len = arguments.length, $ = new Array(_len), _key = 0; _key < _len; _key++) {
-      $[_key] = arguments[_key];
-    }
-
-    return Promise.all($.map(function (_) {
-      return customElements.whenDefined(_).then(function () {
-        return customElements.get(_);
+  /**
+   * @param {string|string[]} names one or more `customElements` names
+   * @return {HTMLElement|HTMLElement[]} one or more classes defined through
+   * the `customElements` registry
+   */
+  var index = (function (names) {
+    var all = [].concat(names);
+    return Promise.all(all.map(function (name) {
+      return customElements.whenDefined(name).then(function () {
+        return customElements.get(name);
       });
-    })).then(function ($) {
-      return $.length === 1 ? $[0] : $;
+    })).then(function (result) {
+      return all.length < 2 ? result[0] : result;
     });
   });
 
