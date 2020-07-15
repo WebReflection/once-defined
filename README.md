@@ -30,11 +30,12 @@ The standard decided that once you `customElements.whenDefined(tagName)` you nee
 With this module, that weights nothing, you can forget about the following boilerplate:
 
 ```js
-customElements.whenDefined(thing).then(
-  () => customElements.get(thing)
-).then(thing => {
-  console.log('finally we have', thing);
-});
+customElements
+  .whenDefined(thing)
+  .then(() => customElements.get(thing))
+  .then(thing => {
+    console.log('finally we have', thing);
+  });
 ```
 
 Use just `when(thing).then(thing => { ... })` and call it a day 🎉
