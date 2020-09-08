@@ -1,1 +1,1 @@
-self.onceDefined=function(n){"use strict";return n.default=function(n){var e=[].concat(n);return Promise.all(e.map((function(n){return customElements.whenDefined(n).then((function(){return customElements.get(n)}))}))).then((function(n){return e.length<2?n[0]:n}))},n}({}).default;
+self.onceDefined=function(n){"use strict";return n.default=function(n){var e=[].concat(n);return Promise.all(e.map((function(n){return customElements.whenDefined(n).then((function(e){return e||customElements.get(n)}))}))).then((function(n){return e.length<2?n[0]:n}))},n}({}).default;

@@ -1,1 +1,1 @@
-self.onceDefined=function(e){"use strict";return e.default=e=>{const t=[].concat(e);return Promise.all(t.map(e=>customElements.whenDefined(e).then(()=>customElements.get(e)))).then(e=>t.length<2?e[0]:e)},e}({}).default;
+self.onceDefined=function(e){"use strict";return e.default=e=>{const t=[].concat(e);return Promise.all(t.map(e=>customElements.whenDefined(e).then(t=>t||customElements.get(e)))).then(e=>t.length<2?e[0]:e)},e}({}).default;

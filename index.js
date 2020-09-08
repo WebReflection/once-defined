@@ -9,8 +9,8 @@ self.onceDefined = (function (exports) {
   var index = (function (names) {
     var all = [].concat(names);
     return Promise.all(all.map(function (name) {
-      return customElements.whenDefined(name).then(function () {
-        return customElements.get(name);
+      return customElements.whenDefined(name).then(function (Class) {
+        return Class || customElements.get(name);
       });
     })).then(function (result) {
       return all.length < 2 ? result[0] : result;
